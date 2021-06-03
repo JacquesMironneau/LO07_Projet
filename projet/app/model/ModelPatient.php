@@ -1,16 +1,17 @@
 <?php
 require_once 'Model.php';
 
-class ModelCentre
+class ModelPatient
 {
-    private $id, $label, $adresse;
+    private $id, $nom, $prenom, $adresse;
 
-    public function __construct($id = NULL, $label = NULL, $adresse = NULL)
+    public function __construct($id = NULL, $nom = NULL, $prenom = NULL, $adresse = NULL)
     {
         // valeurs nulles si pas de passage de parametres
         if (!is_null($id)) {
             $this->id = $id;
-            $this->label = $label;
+            $this->nom = $nom;
+            $this->prenom = $prenom;
             $this->adresse = $adresse;
         }
     }
@@ -34,17 +35,33 @@ class ModelCentre
     /**
      * @return mixed|null
      */
-    public function getLabel()
+    public function getNom()
     {
-        return $this->label;
+        return $this->nom;
     }
 
     /**
-     * @param mixed|null $label
+     * @param mixed|null $nom
      */
-    public function setLabel($label)
+    public function setNom($nom)
     {
-        $this->label = $label;
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param mixed|null $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
     }
 
     /**
@@ -63,15 +80,14 @@ class ModelCentre
         $this->adresse = $adresse;
     }
 
-
     public static function getAll()
     {
         try {
             $database = Model::getInstance();
-            $query = "select * from centre";
+            $query = "select * from patient";
             $statement = $database->prepare($query);
             $statement->execute();
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCentre");
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelPatient");
             return $results;
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
@@ -79,27 +95,28 @@ class ModelCentre
         }
     }
 
-    public static function insert($label, $adresse)
+    public static function insert($nom, $prenom, $adresse)
     {
         try {
             $database = Model::getInstance();
 
             // recherche de la valeur de la clé = max(id) + 1
-            $query = "select max(id) from centre";
+            $query = "select max(id) from patient";
             $statement = $database->query($query);
             $tuple = $statement->fetch();
             $id = $tuple['0'];
             $id++;
 
             // ajout d'un nouveau tuple;
-            $query = "insert into centre value (:id, :label, :adresse)";
+            $query = "insert into patient value (:id, :nom, :prenom, :adresse)";
             $statement = $database->prepare($query);
             $statement->execute([
                 'id' => $id,
-                'label' => $label,
+                'nom' => $nom,
+                'prenom' => $prenom,
                 'adresse' => $adresse
             ]);
-            return $label;
+            return array("nom"=>$nom, "prenom"=>$prenom);
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
             return -1;
