@@ -1,6 +1,6 @@
-<!-- ----- debut Router1 -->
 <?php
-require('../controller/ControllerVaccin.php');
+require('../controller/ControllerCentre.php');
+require('../controller/Controller.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -20,11 +20,10 @@ $args = $param;
 
 // --- Liste des méthodes autorisées
 switch ($action) {
-    case "vaccinReadAll" :
-    case "vaccinCreate" :
-    case "vaccinUpdate" :
-    case "vaccinCreated" :
-        ControllerVaccin::$action($args);
+    case "centreReadAll" :
+    case "centreCreate" :
+    case "centreCreated" :
+        ControllerCentre::$action($args);
         break;
 
     // Tache par défaut
@@ -32,6 +31,3 @@ switch ($action) {
         $action = "accueil";
         Controller::$action();
 }
-?>
-<!-- ----- Fin Router1 -->
-

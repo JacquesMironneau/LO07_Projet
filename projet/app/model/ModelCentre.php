@@ -1,71 +1,75 @@
-<!-- ----- debut ModelVin -->
-
 <?php
 require_once 'Model.php';
 
-class ModelVin
+class ModelCentre
 {
-    private $id, $cru, $annee, $degre;
+    private $id, $label, $adresse;
 
-    // pas possible d'avoir 2 constructeurs
-    public function __construct($id = NULL, $cru = NULL, $annee = NULL, $degre = NULL)
+    public function __construct($id = NULL, $label = NULL, $adresse = NULL)
     {
         // valeurs nulles si pas de passage de parametres
         if (!is_null($id)) {
             $this->id = $id;
-            $this->cru = $cru;
-            $this->annee = $annee;
-            $this->degre = $degre;
+            $this->label = $label;
+            $this->adresse = $adresse;
         }
     }
 
-    function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    function setCru($cru)
-    {
-        $this->cru = $cru;
-    }
-
-    function setAnnee($annee)
-    {
-        $this->annee = $annee;
-    }
-
-    function setDegre($degre)
-    {
-        $this->degre = $degre;
-    }
-
-    function getId()
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }
 
-    function getCru()
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
     {
-        return $this->cru;
+        $this->id = $id;
     }
 
-    function getAnnee()
+    /**
+     * @return mixed|null
+     */
+    public function getLabel()
     {
-        return $this->annee;
+        return $this->label;
     }
 
-    function getDegre()
+    /**
+     * @param mixed|null $label
+     */
+    public function setLabel($label)
     {
-        return $this->degre;
+        $this->label = $label;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param mixed|null $adresse
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
     }
 
 
-// retourne une liste des id
+        // retourne une liste des id
     public static function getAllId()
     {
         try {
             $database = Model::getInstance();
-            $query = "select id from vin";
+            $query = "select id from centre";
             $statement = $database->prepare($query);
             $statement->execute();
             $results = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
@@ -82,7 +86,7 @@ class ModelVin
             $database = Model::getInstance();
             $statement = $database->prepare($query);
             $statement->execute();
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelVin");
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCentre");
             return $results;
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
@@ -94,10 +98,10 @@ class ModelVin
     {
         try {
             $database = Model::getInstance();
-            $query = "select * from vin";
+            $query = "select * from centre";
             $statement = $database->prepare($query);
             $statement->execute();
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelVin");
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCentre");
             return $results;
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
@@ -109,12 +113,12 @@ class ModelVin
     {
         try {
             $database = Model::getInstance();
-            $query = "select * from vin where id = :id";
+            $query = "select * from centre where id = :id";
             $statement = $database->prepare($query);
             $statement->execute([
                 'id' => $id
             ]);
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelVin");
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCentre");
             return $results;
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
@@ -122,28 +126,27 @@ class ModelVin
         }
     }
 
-    public static function insert($cru, $annee, $degre)
+    public static function insert($label, $adresse)
     {
         try {
             $database = Model::getInstance();
 
             // recherche de la valeur de la clé = max(id) + 1
-            $query = "select max(id) from vin";
+            $query = "select max(id) from centre";
             $statement = $database->query($query);
             $tuple = $statement->fetch();
             $id = $tuple['0'];
             $id++;
 
             // ajout d'un nouveau tuple;
-            $query = "insert into vin value (:id, :cru, :annee, :degre)";
+            $query = "insert into centre value (:id, :label, :adresse)";
             $statement = $database->prepare($query);
             $statement->execute([
                 'id' => $id,
-                'cru' => $cru,
-                'annee' => $annee,
-                'degre' => $degre
+                'label' => $label,
+                'adresse' => $adresse
             ]);
-            return $id;
+            return $label;
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
             return -1;
@@ -152,7 +155,7 @@ class ModelVin
 
     public static function update()
     {
-        echo("ModelVin : update() TODO ....");
+        echo("ModelCentre : update() TODO ....");
         return null;
     }
 
@@ -161,7 +164,7 @@ class ModelVin
         try {
             $database = Model::getInstance();
 
-            $query = "delete from vin where id = :id";
+            $query = "delete from centre where id = :id";
             $statement = $database->prepare($query);
             $statement->execute([
                 'id' => $id
@@ -174,6 +177,3 @@ class ModelVin
     }
 
 }
-
-?>
-<!-- ----- fin ModelVin -->
