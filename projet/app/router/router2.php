@@ -1,6 +1,8 @@
+<!-- ----- debut Router1 -->
 <?php
-require('../controller/ControllerCentre.php');
+require('../controller/ControllerVaccin.php');
 require('../controller/Controller.php');
+require('../controller/ControllerCentre.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -25,9 +27,19 @@ switch ($action) {
     case "centreCreated" :
         ControllerCentre::$action($args);
         break;
+    case "vaccinReadAll" :
+    case "vaccinCreate" :
+    case "vaccinCreated" :
+    case "vaccinUpdate" :
+    case "vaccinUpdated" :
+   ControllerVaccin::$action();
+        break;
 
     // Tache par défaut
     default:
         $action = "accueil";
         Controller::$action();
 }
+?>
+<!-- ----- Fin Router1 -->
+
