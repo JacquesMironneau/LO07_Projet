@@ -11,18 +11,18 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     ?>
     <!-- ===================================================== -->
     <?php
-    if ($results) {
-        echo("<h3>Le nouveau vin a été ajouté </h3>");
+    if ($results !== -1) {
+        echo("<h3>Le nouveau vaccin ". $_GET['label']. " a été ajouté </h3>");
         echo("<ul>");
         echo("<li>id = " . $results . "</li>");
-        echo("<li>cru = " . $_GET['cru'] . "</li>");
-        echo("<li>annee = " . $_GET['annee'] . "</li>");
-        echo("<li>degre = " . $_GET['degre'] . "</li>");
+        echo("<li>Label = " . $_GET['label'] . "</li>");
+        echo("<li>Doses = " . $_GET['doses'] . "</li>");
         echo("</ul>");
     } else {
-        echo("<h3>Problème d'insertion du Vin</h3>");
-        echo("id = " . $_GET['cru']);
+        echo("<h3>Problème d'insertion du vaccin</h3>");
     }
+
+
 
     echo("</div>");
 

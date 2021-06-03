@@ -13,15 +13,13 @@ require($root . '/app/view/fragment/fragmentHeader.html');
 
     <form role="form" method='get' action='router2.php'>
         <div class="form-group">
-            <input type="hidden" name='action' value='vinCreated'>
-            <label for="id">cru : </label><input type="text" name='cru' size='75' value='Champagne de déconfinement'>
-            <label for="id">annee : </label><input type="number" name='annee' value='2021'>
-            <label for="id">degre : </label><input type="number" step='any' name='degre' value='17.24'>
+            <input type="hidden" name='action' value='vaccinCreated'>
+            <label for="label">Label : </label><input type="text" name='label' id='label' size='75' value=''>
+            <br>
+            <label for="doses">Dose : </label><input type="number" name='doses' id='doses' value=''>
         </div>
-        <p/>
         <button class="btn btn-primary" type="submit">Go</button>
     </form>
-    <p/>
 </div>
 <?php include $root . '/app/view/fragment/fragmentFooter.html'; ?>
 

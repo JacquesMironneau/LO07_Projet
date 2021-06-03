@@ -1,6 +1,7 @@
 <!-- ----- debut Router1 -->
 <?php
 require('../controller/ControllerVaccin.php');
+require('../controller/Controller.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -22,9 +23,10 @@ $args = $param;
 switch ($action) {
     case "vaccinReadAll" :
     case "vaccinCreate" :
-    case "vaccinUpdate" :
     case "vaccinCreated" :
-        ControllerVaccin::$action($args);
+    case "vaccinUpdate" :
+    case "vaccinUpdated" :
+   ControllerVaccin::$action();
         break;
 
     // Tache par défaut
