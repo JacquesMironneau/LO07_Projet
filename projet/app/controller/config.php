@@ -1,4 +1,3 @@
-<!-- ----- debut config -->
 <?php
 
 // Utile pour le débugage car c'est un interrupteur pour les echos et print_r.
@@ -27,8 +26,3 @@ if (DEBUG) {
     echo("</ul>");
 }
 ?>
-
-<!-- ----- fin config -->
-
-
-

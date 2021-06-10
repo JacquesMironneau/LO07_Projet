@@ -8,7 +8,6 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     include $root . '/app/view/fragment/fragmentMenu.html';
     include $root . '/app/view/fragment/fragmentJumbotron.html';
     ?>
-    <!-- ===================================================== -->
     <?php
     if ($results) {
         echo("<h3>Le nouveau centre : '$results' a été ajouté </h3>");
