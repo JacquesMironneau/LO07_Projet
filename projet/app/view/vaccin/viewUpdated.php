@@ -9,7 +9,7 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     include $root . '/app/view/fragment/fragmentMenu.html';
     include $root . '/app/view/fragment/fragmentJumbotron.html';
     ?>
-    <!-- ===================================================== -->
+    
     <?php
     if ($results === 0) {
         echo("<h3>Le vaccin ". $_GET['vaccin']. " a été modifié </h3>");

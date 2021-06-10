@@ -9,7 +9,7 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     include $root . '/app/view/fragment/fragmentMenu.html';
     include $root . '/app/view/fragment/fragmentJumbotron.html';
     ?>
-    <!-- ===================================================== -->
+    
     <?php
     if ($results !== -1) {
         echo("<h3>Le nouveau vaccin ". $_GET['label']. " a été ajouté </h3>");

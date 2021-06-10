@@ -1,4 +1,3 @@
-<!-- ----- debut ControllerVin -->
 <?php
 require_once '../model/ModelVaccin.php';
 

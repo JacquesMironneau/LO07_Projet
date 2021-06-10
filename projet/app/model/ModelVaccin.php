@@ -1,5 +1,3 @@
-<!-- ----- debut ModelVin -->
-
 <?php
 require_once 'Model.php';
 
@@ -153,4 +151,3 @@ class ModelVaccin
 
 
 ?>
-<!-- ----- fin ModelVin -->
