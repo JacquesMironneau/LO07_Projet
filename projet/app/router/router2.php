@@ -57,6 +57,9 @@ switch ($action) {
         ControllerStock::$action();
         break;
     // Tache par défaut
+    case "graphStockVaccin":
+        Controller::$action();
+        break;
     default:
         $action = "accueil";
         Controller::$action();
