@@ -122,5 +122,4 @@ class ModelPatient
             return -1;
         }
     }
-
 }

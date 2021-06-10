@@ -3,6 +3,7 @@ require('../controller/ControllerCentre.php');
 require('../controller/Controller.php');
 require('../controller/ControllerPatient.php');
 require('../controller/ControllerVaccin.php');
+require('../controller/ControllerRendezVous.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -31,6 +32,7 @@ switch ($action) {
     case "patientReadAll" :
     case "patientCreate" :
     case "patientCreated" :
+    case "patientViewId":
         ControllerPatient::$action($args);
         break;
     case "vaccinReadAll" :
@@ -41,6 +43,10 @@ switch ($action) {
    ControllerVaccin::$action();
         break;
 
+    case "situationVaccinale":
+    case "priseRendezVous":
+        ControllerRendezVous::$action();
+        break;
     // Tache par défaut
     default:
         $action = "accueil";

@@ -13,7 +13,7 @@ class ModelVaccin
      * @param $label
      * @param $dose
      */
-     public function __construct($id=NULL, $label=NULL, $doses=NULL)
+    public function __construct($id = NULL, $label = NULL, $doses = NULL)
     {
         if (!is_null($id)) {
             $this->id = $id;
@@ -31,6 +31,22 @@ class ModelVaccin
             $statement->execute();
             $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelVaccin");
             return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function getOne($vaccin_id)
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "select * from vaccin where id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute(['id' => $vaccin_id]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelVaccin");
+
+            return $results[0];
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
             return NULL;
@@ -73,8 +89,8 @@ class ModelVaccin
             $query = "update vaccin set doses = :doses where id = :id";
             $statement = $database->prepare($query);
             $statement->execute([
-                    'id' => $id,
-                    'doses' => $doses,
+                'id' => $id,
+                'doses' => $doses,
             ]);
             return 0;
 
@@ -131,7 +147,6 @@ class ModelVaccin
     {
         $this->doses = $dose;
     }
-
 
 
 }

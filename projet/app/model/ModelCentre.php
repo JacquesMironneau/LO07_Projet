@@ -79,6 +79,36 @@ class ModelCentre
         }
     }
 
+    public static function getAllWithAtLeastOneShot()
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT id, label, adresse FROM stock join centre on centre_id = id where quantite > 0 group by centre_id";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCentre");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function getAllWithAtLeastOneShotWithVaccine($vaccin_id)
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT id, label, adresse FROM stock join centre on centre_id = id where quantite > 0 and vaccin_id = :id group by centre_id";
+            $statement = $database->prepare($query);
+            $statement->execute(['id' => $vaccin_id]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCentre");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
     public static function insert($label, $adresse)
     {
         try {

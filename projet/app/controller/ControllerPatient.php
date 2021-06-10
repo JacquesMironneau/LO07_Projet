@@ -8,9 +8,20 @@ class ControllerPatient
     public static function patientReadAll()
     {
         $results = ModelPatient::getAll();
+
         include 'config.php';
         require($root . '/app/view/patient/viewAll.php');
     }
+
+    public static function patientViewId()
+    {
+        $results = ModelPatient::getAll();
+
+        include 'config.php';
+        require($root . '/app/view/patient/viewId.php');
+    }
+
+
 
     public static function patientCreate()
     {
@@ -31,6 +42,4 @@ class ControllerPatient
         $vue = $root . '/app/view/patient/viewInserted.php';
         require($vue);
     }
-
-
 }

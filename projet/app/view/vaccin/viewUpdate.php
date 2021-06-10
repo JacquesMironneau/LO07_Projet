@@ -15,7 +15,7 @@ require($root . '/app/view/fragment/fragmentHeader.html');
         <div class="form-group">
             <input type="hidden" name='action' value='vaccinUpdated'>
 
-            <label for="vin">Sélectionnez un vin : </label>
+            <label for="vin">Sélectionnez un vaccin : </label>
             <select class="form-control" id='vaccin' name='vaccin' style="width: 300px">
                 <?php
                 foreach ($vaccins as $vaccin) {
