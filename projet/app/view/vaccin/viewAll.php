@@ -10,6 +10,7 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     include $root . '/app/view/fragment/fragmentJumbotron.html';
     ?>
 
+    <h3>Liste des vaccins disponibles</h3>
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
@@ -20,7 +21,6 @@ require($root . '/app/view/fragment/fragmentHeader.html');
         </thead>
         <tbody>
         <?php
-        // La liste des vins est dans une variable $results
         foreach ($vaccins as $vaccin) {
             printf("<tr><td>%d</td><td>%s</td><td>%d</td></tr>", $vaccin->getId(),
                 $vaccin->getLabel(), $vaccin->getDoses());
@@ -30,8 +30,3 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     </table>
 </div>
 <?php include $root . '/app/view/fragment/fragmentFooter.html'; ?>
-
-<!-- ----- fin viewAll -->
-  
-  
-  

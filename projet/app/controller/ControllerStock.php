@@ -4,7 +4,6 @@ require_once '../model/ModelStock.php';
 class ControllerStock
 {
 
-    // Liste des stocks
     public static function stockReadAll()
     {
         $query = "select centre.label as Label, sum(quantite) as Doses from stock, centre WHERE centre.id = stock.centre_id 
@@ -48,6 +47,9 @@ WHERE centre.id = stock.centre_id and vaccin.id = stock.vaccin_id and quantite !
         $vue = $root . '/app/view/stock/viewInserted.php';
         require($vue);
     }
+
+
+
 
 
 }

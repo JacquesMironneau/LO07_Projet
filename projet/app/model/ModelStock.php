@@ -7,7 +7,6 @@ class ModelStock
 
     public function __construct($centre_id = NULL, $vaccin_id = NULL, $quantite = NULL)
     {
-        // valeurs nulles si pas de passage de parametres
         if (!is_null($centre_id) && !is_null($vaccin_id)) {
             $this->centre_id = $centre_id;
             $this->vaccin_id = $vaccin_id;
@@ -108,17 +107,32 @@ quantite=:quantite+quantite";
                     ]);
                 }
             } else {
-                return ["code" =>3];
+                return ["code" => 3];
             }
-            if ($nb_insert==0) {
+            if ($nb_insert == 0) {
                 $res = 2;
             } else {
                 $res = 1;
             }
-            return ["code" => $res, "result"=>ModelCentre::getOne($centre_id)[0]->getLabel()];
+            return ["code" => $res, "result" => ModelCentre::getOne($centre_id)[0]->getLabel()];
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
             return ["code" => -1];
+        }
+    }
+
+    public static function getStockGraph()
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "select label,sum(quantite) as quantite from stock join vaccin on vaccin_id = id group by label";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
         }
     }
 

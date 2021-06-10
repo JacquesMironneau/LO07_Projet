@@ -1,5 +1,3 @@
-<!-- ----- début viewInsert -->
-
 <?php
 require($root . '/app/view/fragment/fragmentHeader.html');
 ?>
@@ -22,7 +20,7 @@ require($root . '/app/view/fragment/fragmentHeader.html');
             <input type="hidden" name='action' value='priseRendezVous'>
             <input type="hidden" name='patient' id='patient' value="<?php echo $patient_id ?>">
 
-            <label for="vin">Sélectionnez un centre : </label>
+            <label for="centre">Sélectionnez un centre : </label>
             <select class="form-control" id='centre' name='centre' style="width: 400px">
                 <?php
                 foreach ($centres as $centre) {
@@ -37,5 +35,3 @@ require($root . '/app/view/fragment/fragmentHeader.html');
 <?php
 }
 include $root . '/app/view/fragment/fragmentFooter.html'; ?>
-
-<!-- ----- fin viewInsert -->

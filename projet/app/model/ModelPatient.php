@@ -7,7 +7,6 @@ class ModelPatient
 
     public function __construct($id = NULL, $nom = NULL, $prenom = NULL, $adresse = NULL)
     {
-        // valeurs nulles si pas de passage de parametres
         if (!is_null($id)) {
             $this->id = $id;
             $this->nom = $nom;
@@ -116,7 +115,7 @@ class ModelPatient
                 'prenom' => $prenom,
                 'adresse' => $adresse
             ]);
-            return array("nom"=>$nom, "prenom"=>$prenom);
+            return array("nom" => $nom, "prenom" => $prenom);
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
             return -1;

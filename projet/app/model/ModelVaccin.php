@@ -148,6 +148,3 @@ class ModelVaccin
 
 
 }
-
-
-?>

@@ -7,7 +7,6 @@ class ModelCentre
 
     public function __construct($id = NULL, $label = NULL, $adresse = NULL)
     {
-        // valeurs nulles si pas de passage de parametres
         if (!is_null($id)) {
             $this->id = $id;
             $this->label = $label;

@@ -1,5 +1,3 @@
-<!-- ----- début viewInsert -->
-
 <?php
 require($root . '/app/view/fragment/fragmentHeader.html');
 ?>
@@ -23,5 +21,3 @@ require($root . '/app/view/fragment/fragmentHeader.html');
 
 </div>
 <?php include $root . '/app/view/fragment/fragmentFooter.html'; ?>
-
-<!-- ----- fin viewInsert -->

@@ -4,7 +4,6 @@ require_once '../model/ModelVaccin.php';
 class ControllerVaccin
 {
 
-    // --- Liste des vins
     public static function vaccinReadAll()
     {
         $vaccins = ModelVaccin::getAll();

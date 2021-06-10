@@ -6,14 +6,10 @@ require('../controller/ControllerVaccin.php');
 require('../controller/ControllerRendezVous.php');
 require('../controller/ControllerStock.php');
 
-// --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
 
-// fonction parse_str permet de construire 
-// une table de hachage (clé + valeur)
 parse_str($query_string, $param);
 
-// --- $action contient le nom de la méthode statique recherchée
 $action = htmlspecialchars($param["action"]);
 
 $action = $param['action'];
@@ -22,7 +18,6 @@ unset($param['action']);
 
 $args = $param;
 
-// --- Liste des méthodes autorisées
 switch ($action) {
     case "centreReadAll" :
     case "centreCreate" :
@@ -42,7 +37,7 @@ switch ($action) {
     case "vaccinCreated" :
     case "vaccinUpdate" :
     case "vaccinUpdated" :
-   ControllerVaccin::$action();
+        ControllerVaccin::$action();
         break;
 
     case "situationVaccinale":
@@ -56,12 +51,17 @@ switch ($action) {
     case "stockCreated":
         ControllerStock::$action();
         break;
-    // Tache par défaut
+
     case "graphStockVaccin":
     case "meteo":
     case "mapCentreVaccination" :
+    case "innovation1" :
+    case "innovation2" :
+    case "innovation3" :
+    case "avisGlobal" :
         Controller::$action();
         break;
+
     default:
         $action = "accueil";
         Controller::$action();

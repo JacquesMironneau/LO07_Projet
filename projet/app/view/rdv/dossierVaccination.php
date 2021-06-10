@@ -9,7 +9,7 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     include $root . '/app/view/fragment/fragmentJumbotron.html';
 
 
-    echo ("<h2> Vous avez déjà reçu toutes vos doses de vaccin</h2>");
+    echo("<h2> Vous avez déjà reçu toutes vos doses de vaccin</h2>");
 
     ?>
 

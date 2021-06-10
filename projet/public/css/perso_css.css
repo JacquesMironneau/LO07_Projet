@@ -1,4 +1,3 @@
-
 body {
     background-color: white;
 }
@@ -13,4 +12,26 @@ body {
   background-color:orange;
 }
 
-#mapid { height: 180px; }
+@media only screen and (max-width: 1400px) {
+
+    .jumbotron {
+        margin-top: 6vh;
+    }
+
+}
+
+@media only screen and (max-width: 1162px) {
+
+    .jumbotron {
+        margin-top: 10vh;
+    }
+
+}
+
+@media only screen and (max-width: 760px) {
+
+    .jumbotron {
+        margin-top: 30vh;
+    }
+
+}

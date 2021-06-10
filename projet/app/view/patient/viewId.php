@@ -1,21 +1,17 @@
-
-<!-- ----- début viewId -->
 <?php
-require ($root . '/app/view/fragment/fragmentHeader.html');
+require($root . '/app/view/fragment/fragmentHeader.html');
 ?>
-
-<body>
+    <body>
 <div class="container">
     <?php
     include $root . '/app/view/fragment/fragmentMenu.html';
     include $root . '/app/view/fragment/fragmentJumbotron.html';
-
-    // $results contient un tableau avec la liste des clés.
     ?>
 
+    <h3>Selection d'un patient</h3>
     <form role="form" method='get' action='router2.php'>
         <div class="form-group">
-            <input type="hidden" name='action'  value='situationVaccinale'>
+            <input type="hidden" name='action' value='situationVaccinale'>
             <label for="id">id : </label>
             <select class="form-control" id='id' name='id' style="width: 300px">
                 <?php
@@ -25,12 +21,8 @@ require ($root . '/app/view/fragment/fragmentHeader.html');
                 ?>
             </select>
         </div>
-        <p/>
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit">Valider</button>
     </form>
-    <p/>
 </div>
 
 <?php include $root . '/app/view/fragment/fragmentFooter.html'; ?>
-
-<!-- ----- fin viewId -->
