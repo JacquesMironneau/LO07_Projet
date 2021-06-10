@@ -23,4 +23,14 @@ class Controller
         $vue = $root . '/app/view/vaccin/graphStockVaccin.php';
         require($vue);
     }
+
+    public static function mapCentreVaccination()
+    {
+
+        $results = ModelCentre::getAll();
+
+        include 'config.php';
+        $vue = $root . '/app/view/centre/mapCentreVaccination.php';
+        require($vue);
+    }
 }

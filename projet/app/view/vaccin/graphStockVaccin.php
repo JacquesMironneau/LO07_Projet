@@ -1,5 +1,3 @@
-<!-- ----- début viewInsert -->
-
 <?php
 require($root . '/app/view/fragment/fragmentHeader.html');
 ?>
@@ -10,7 +8,6 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     include $root . '/app/view/fragment/fragmentMenu.html';
     include $root . '/app/view/fragment/fragmentJumbotron.html';
     ?>
-
     <h3>Quantité totale de vaccins disponible</h3>
     <div >
         <canvas  width="80" height="25" id="myChart"></canvas>
@@ -19,7 +16,6 @@ require($root . '/app/view/fragment/fragmentHeader.html');
 
     <script>
         let domData = <?php echo json_encode($results, JSON_HEX_TAG); ?>;
-        console.log(domData)
         domData = domData.filter(x => x.quantite > 0)
         // === include 'setup' then 'config' above ===
         const labels = domData.map(x => x.label)
@@ -55,8 +51,5 @@ require($root . '/app/view/fragment/fragmentHeader.html');
 
     <?php
 include $root . '/app/view/fragment/fragmentFooter.html'; ?>
-
-<!-- ----- fin viewInsert -->
-
 
 

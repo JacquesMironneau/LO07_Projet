@@ -12,3 +12,5 @@ body {
 .jumbotron {
   background-color:orange;
 }
+
+#mapid { height: 180px; }
