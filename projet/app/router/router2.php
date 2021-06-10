@@ -58,6 +58,7 @@ switch ($action) {
         break;
     // Tache par défaut
     case "graphStockVaccin":
+    case "meteo":
     case "mapCentreVaccination" :
         Controller::$action();
         break;

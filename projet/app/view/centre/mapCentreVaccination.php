@@ -20,11 +20,12 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     </select>
 <br />
     <div id="osm-map"></div>
+</div>
     <script>
         var element = document.getElementById('osm-map');
 
         // Height has to be set. You can do this in CSS too.
-        element.style = 'height:300px;';
+        element.style = 'height:600px;';
         var map = L.map(element);
 
 

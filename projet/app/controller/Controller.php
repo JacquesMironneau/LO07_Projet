@@ -1,6 +1,7 @@
 <?php
 
 require_once "../model/Model.php";
+require_once "../model/ModelCentre.php";
 
 class Controller
 {
@@ -31,6 +32,13 @@ class Controller
 
         include 'config.php';
         $vue = $root . '/app/view/centre/mapCentreVaccination.php';
+        require($vue);
+    }
+
+    public static function meteo()
+    {
+        include 'config.php';
+        $vue = $root . '/app/view/vaccin/meteo.php';
         require($vue);
     }
 }

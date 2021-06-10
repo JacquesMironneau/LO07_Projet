@@ -9,9 +9,10 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     include $root . '/app/view/fragment/fragmentJumbotron.html';
     ?>
     <h3>Quantité totale de vaccins disponible</h3>
-    <div >
-        <canvas  width="80" height="25" id="myChart"></canvas>
+    <div>
+        <canvas width="80" height="25" id="myChart"></canvas>
     </div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
@@ -50,6 +51,6 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     </script>
 
     <?php
-include $root . '/app/view/fragment/fragmentFooter.html'; ?>
+    include $root . '/app/view/fragment/fragmentFooter.html'; ?>
 
 
